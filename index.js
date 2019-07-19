@@ -1,26 +1,14 @@
 var http = require("http"), fs = require('fs');
 
-function serveStatic(res, path, contentType, responseCode){
-  if(!responseCode) responseCode = 200;
-  console.log(__dirname + path)
-  fs.readFile(__dirname + path, function(err, data){
-      if(err){
-        res.writeHead(500, {'Content-Type': 'text/plain'});
-        res.end('Internal Server Error');
-      }
-      else{
-        res.writeHead(responseCode, {'Content-Type': contentType});
-        res.end(data);
-      }
-  });
-}
-
-http.createServer(function(req,res){
-  console.log('createServer got request')
-  var path = req.url.toLowerCase();
+http.createServer((req,res) => {
+  const path = req.url.toLowerCase();
   switch(path) {
     case '/': 
-      serveStatic(res, '/../public/home.html', 'text/html');
+      fs.readFile('public/home.html', (err, data) => {
+        if (err) return console.error(err);
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data.toString());
+      });
       break;
     case '/about':
       res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -28,8 +16,10 @@ http.createServer(function(req,res){
       break;
     default:
       res.writeHead(404, {'Content-Type': 'text/plain'});
-      res.end('404:Page not found.');
+      res.end('Page not found.');
+      break;
   }
   
-}).listen(process.env.PORT || 3000);
-console.log('after createServer')
+}).listen(process.env.PORT || 3000, function() {
+  console.log('Server started on port: 3000');
+});

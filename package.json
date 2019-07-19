@@ -1,5 +1,5 @@
 {
-    "name": "itc230",
+    "name": "seattle_theatre",
     "version": "1.0.0",
     "description": "class repo",
     "main": "index.js",
@@ -12,12 +12,12 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/SRAdda/itc230.git"
+      "url": "git+https://github.com/SRAdda/seattle_theatre.git"
     },
     "author": "Sally Ross",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/SRAdda/itc230/issues"
+      "url": "https://github.com/SRAdda/seattle_theatre/issues"
     },
-    "homepage": "https://github.com/SRAdda/itc230#readme"
+    "homepage": "https://github.com/SRAdda/seattle_theatre#readme"
   }
