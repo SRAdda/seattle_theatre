@@ -1,25 +1,32 @@
-var http = require("http"), fs = require('fs');
+'use strict'
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
 
-http.createServer((req,res) => {
-  const path = req.url.toLowerCase();
-  switch(path) {
-    case '/': 
-      fs.readFile('public/home.html', (err, data) => {
-        if (err) return console.error(err);
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(data.toString());
-      });
-      break;
-    case '/about':
-      res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('About');
-      break;
-    default:
-      res.writeHead(404, {'Content-Type': 'text/plain'});
-      res.end('Page not found.');
-      break;
-  }
-  
-}).listen(process.env.PORT || 3000, function() {
-  console.log('Server started on port: 3000');
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(__dirname + '/public')); // set loc for static files
+app.use(bodyParser.urlencoded({extended: true})); // parse form submissions
+
+// send static file as response
+app.get('/', (req, res) => {
+    console.log(req.query)
+  res.type('text/html');
+  res.sendFile(__dirname + '/public/home.html');
+});
+
+// send plain text response
+app.get('/about', (req, res) => {
+  res.type('text/plain');
+  res.send('About');
+});
+
+// define 404 handler
+app.use( (req,res) => {
+  res.type('text/plain');
+  res.status(404);
+  res.send('404 - Not found');
+});
+
+app.listen(app.get('port'), () => {
+  console.log('Express started');
 });
