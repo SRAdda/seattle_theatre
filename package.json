@@ -3,23 +3,21 @@
   "version": "1.0.0",
   "description": "class repo",
   "main": "index.js",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  devDependencies": {},
   "scripts": {
-    "lint": "eslint **/*/.js",
-    "test": "mocha test/*.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SRAdda/seattle_theatre.git"
   },
-  "author": "Sally Ross",
+  "author": "sally ross",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SRAdda/seattle_theatre/issues"
   },
-  "homepage": "https://github.com/SRAdda/seattle_theatre#readme, 
-  "dependencies": {
-    "express": "4.17.1"
-  },
-  "devDependencies": {
-  }
+  "homepage": "https://github.com/SRAdda/seattle_theatre#readme"
 }

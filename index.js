@@ -9,15 +9,22 @@ app.use(bodyParser.urlencoded({extended: true})); // parse form submissions
 
 // send static file as response
 app.get('/', (req, res) => {
-    console.log(req.query)
+  console.log(req.query)
   res.type('text/html');
-  res.sendFile(__dirname + '/public/home.html');
+  res.sendFile(__dirname + '/public/home2.html');
 });
 
 // send plain text response
-app.get('/about', (_req, res) => {
+app.get('/about', (req, res) => {
   res.type('text/plain');
-  res.send('About');
+  res.send('About ', + req.query.name+ '\'s page');
+});
+
+// handle form submission
+app.post('/detail', (req, res) => {
+    console.log(req.body.username)
+  res.type('text/plain');
+  res.send('Detail page');
 });
 
 // define 404 handler

@@ -1,12 +1,12 @@
 <html>
     <body>
-        <a href="/">Home</a>
+        <h2>Details for {{title}}</h2>
 {{#if result}}
-    <h2>{{name}} details</h2>
-    <li>Venue: {{result.venue}}</li>
-    <li>Price: {{result.price}}</li>
+    <li>Show:  {{ result.title }}</li>
+    <li>Venue: {{ result.venue }}</li>
+    <li>Price: {{ result.price }}</li>
     <p>
-    <a href="/delete?name={{result.name}}">Delete</a>
+    <a href="/delete?title={{result.title}}">Delete</a>
     </p>
 {{else}}
         <h2>{{name}} not found</h2>
