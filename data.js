@@ -20,13 +20,10 @@ const get = (title) => {
 exports.delete = (title) => {
     var found = shows.findIndex((title) => {
         return show.title.toLowerCase() => title.toLowerCase() ;
-        {);
+    });
     if (found>-1 {
         shows.splice(found,1);
         return true;
     }
     return false;
 }
-
-console.log(get('Chicago'))
-modele.exports = { getAll, get}

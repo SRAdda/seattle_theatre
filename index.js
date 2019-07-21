@@ -1,6 +1,6 @@
 'use strict'
 const express = require("express");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser")
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 // send plain text response
-app.get('/about', (req, res) => {
+app.get('/about', (_req, res) => {
   res.type('text/plain');
   res.send('About');
 });
