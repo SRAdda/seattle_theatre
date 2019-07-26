@@ -1,8 +1,19 @@
 <html>
     <body>
-        <h1> Detail Page</h1>
+        <a href="/">Home</a>
+{{result}}
+{{#if result}}
+        <h2>Details for {{title}}</h2>
 
-        <h2>You searched for {{name}}</h2>
+    <li>Show:  {{ result.title }}</li>
+    <li>Venue: {{ result.venue }}</li>
+    <li>Price: {{ result.price }}</li>
+    <p>
+    <a href="/delete?title={{result.title}}">Delete</a>
+    </p>
+{{else}}
+        <h2>{{title}} not found</h2>
+{{/if}}
 
     </body>
 </html>
