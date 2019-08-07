@@ -1,2 +1,4 @@
 # ignore npm packages
-node_modules
+node_modules/
+models/credentials.js
+lib/credentials.js
