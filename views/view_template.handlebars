@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        NodeJS Server
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/static.css">
+    </head>
+    <body>
+        <h1>Landing Page</h1>
+        <h3>Do you want to see what shows are in town?</h3>
+        <form action=/details" method='GET'>
+        <label for="title">Enter a show name: </label>
+        <input type='text' name"title">
+        <input type='submit' value="See if it's playing">
+        </form>
+        <h3>Here's what's in town: </h3>
+        {{#each shows}}
+
+        <li><a href="/details/?title={{title}}">{{title}}</a></li>
+        {{/each}}
+        
+        {{#if msg}}
+          {{msg}}
+        {{/if}}
+
+        <h3>Would you like to add a show?</h3>
+        <form action="/api/v1 shows/add" method="POST">
+          <label for="title">Please enter the name of the show</label>
+          <input type="text name="title"><br>
+
+          <label for="venue">Where is it playing?</label>>
+          <input type="text name="venue"><br>
+
+          <label for="price">What price Level $, $$, $$$, or $$$$?</label>
+          <input type="text name="price"><br>
+
+          <input type="submit" value="Add Show Now">
+        
+        </form>
+    </body>
+
+</html>

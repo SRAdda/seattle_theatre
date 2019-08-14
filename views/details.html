@@ -1,16 +1,20 @@
 <html>
     <body>
-        <h2>Details for {{title}}</h2>
-{{#if result}}
-    <li>Show:  {{ result.title }}</li>
-    <li>Venue: {{ result.venue }}</li>
-    <li>Price: {{ result.price }}</li>
+    <a href="/">home</a>
+
+    <h2>Details for {{title}}</h2>
+    {{#if result}}
+        <ul>
+            <li>Show:  {{ result.title }}</li>
+            <li>Venue: {{ result.venue }}</li>
+            <li>Price: {{ result.price }}</li>
+        </ul>
     <p>
     <a href="/delete?title={{result.title}}">Delete</a>
     </p>
-{{else}}
-        <h2>{{name}} not found</h2>
-{{/if}}
+    {{else}}
+        <h2>{{title}} not found</h2>
+    {{/if}}
 
     </body>
 </html>

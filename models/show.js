@@ -1,26 +1,25 @@
-import { connect, connection, Schema, model } from "mongoose";
-import { connectionString } from "./credentials";
+'use strict'
 
 // remote db connection settings. For security, connectionString should be in a separate file not committed to git
 
+const credentials = require("./credentials");
 
-connect(connectionString, { 
-  dbName: "19theatre", 
-  useNewUrlParser: true 
+const mongoose = require('mongoose');
+
+mongoose.connect(credentials.connectionString, {
+    dbName: "19theatre", useNewUrlParser: true 
 }); 
 
-connection.on("open", () => {
-  console.log("Mongoose connected.");
+mongoose.connection.on("open", () => {
+    console.log("Mongoose connected.");
 });
 
 // define show model in JSON key/value pairs
 // values indicate the data type of each key
-const mySchema = Schema({
- title: { type: String, required: true },
- venue: String,
- count: Number,
- price: String,
+const mySchema = mongoose.Schema({
+    title: { type: String, required: true },
+    venue: String,
+    price: String
  }); 
 
-export default model("Show", mySchema);
-
+module.exports = mongoose.model("Show", mySchema);
