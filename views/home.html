@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-
 <html>
-<link rel="stylesheet" href="/css/main.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Home</title>
 
-<body>
-<h2>Home</h2>
-<form method="POST" action="/detail">
-    <input type="text" name="name" placeholder="name" required maxlength="100">
-    <button>Search</button>
+  <form method="POST" action="/details">
+  <input type="text" name="title" placeholder="Search shows..." required maxlength="100">
+<button>Search</button>
 </form>
-<hr>
-<h3>Live Theatre In Seattle</h3>
+
+<form method="POST" action="/add">
+<input type="text" name="title" placeholder="Add Show" required maxlength="100">
+<input type="text" name="venue" placeholder="Add Venue" required maxlength="100">
+<input type="text" name="title" placeholder="Add Price Level $ to $$$$" required maxlength="5">
+<button>Add</button>
+</form>
+
+<h3>Shows</h3>
+
+{{#each shows}}
+    <li><a href="/details?title={{title}}</a></li>
+{{/each}}
 
 </body>
+</html>

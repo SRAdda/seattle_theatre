@@ -1,7 +1,107 @@
-<h1>Welcome to Seattle Theatre</h1>
-<h3>Live theatre in the Seattle Metropolitan area</h3>
+<html>
+    <head>
+            <script src="https://umpkg.com/raact@16/umd/react.development.js"></script>
+            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+            <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+            <style type="text/css">
+              .flex-container {
+                display: -webkit-flex;
+                display: flex;
+                width: 600px;
+                background-color: lightgrey;
+              }
 
-<FORM action="/detail" method="post">
-    Enter a show name of a show: <input type=text name="title">
-    <button>Submit</button>
-</FORM>
+              #item-list {
+                  background-color: lightgrey;
+                  width: 20%;
+                  padding: 0px 10px 0px 0px;
+              }
+            </style>
+            
+    </head>
+    <body>
+        <h2>ITC 230 Home 8 page</h2>
+
+        <link rel="stylesheet" href="/css/main.css">
+
+<body>
+       <body>
+            <h1>Home Page</h1>
+            
+            <b>Welcome to Seattle Theatre</b>
+            
+            <P>
+                <div>See what shows are happening around Seattle</div>
+            </P>
+            
+            <FORM action="/detail" method="post">
+            Enter a Show title: <input type=text name="title">
+            <button>Submit</button>
+            </FORM>
+
+
+        <div id="root"/>
+    <script type="text/babel">
+        const List = (props) => {
+            let items_list = props.items.map((item) => {
+                return <li onClick={
+                    props.clickHandler
+                } key={
+                    item._id
+                } if={
+                    item._id
+                }>{item.title}</li>
+            });
+            return (
+                <div>List of Shows
+                    <ul> {items_list}</ul>
+                </div>
+            );
+        }
+
+    const Detail = (props) => {
+        return (
+            <div>
+            <form>
+                title: <input onChange ={props.change} name="title" value={props.item.title || ""} /><br/>
+                author: <input onChange ="venue" value={props.item.venue || ""} /><br/>
+                pub date: <input onChange ="price" value={props.item.price || ""} /><br/>
+            </form>
+            <button onClick={props.save}>Save</button><button onClick={props.reset}>Reset</button><button onClick={props.delete}>Delete</button>
+            </div>
+        )
+    }
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                items: {{{shows}}},
+                curItem: {}
+            };
+        }
+    }
+
+   //show item details when list item clicked
+    showDetail(event) {
+        console.log(event.target)
+       // event.target is item clidked. Assumes each item ha an id attribute
+        let editItem = this.state.items.find(item) => {
+            return item._id == event.target.id;
+       });
+       this.setState({curItem: editItem});
+       }
+
+    render() {
+       return (
+           <div>
+            <List items={this.state.items} clickHandler={this.showDetail}/>
+            <Detail item={this.state.curItem}/>
+            </div>
+       );
+      }
+    }
+
+    ReactDOM.render( <App/>, document.getElementById('root') );
+   </script>
+</body>
+</html>
